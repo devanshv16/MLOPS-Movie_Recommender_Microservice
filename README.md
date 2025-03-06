@@ -1,5 +1,12 @@
 # MLOPS-Movie_Recommender_Microservice
-[![CI Pipeline](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml/badge.svg)](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml)
+
+### CI/CD Pipeline Status
+
+#### ✅ CI (Testing & Linting)
+[![CI Status](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml/badge.svg?job=build-and-test)](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml)
+
+#### 🚀 CD (Docker Deployment)
+[![CD Status](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml/badge.svg?job=deploy)](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml)
 
 ## Overview
 This is a **containerized machine learning microservice** that provides movie recommendations using the **MovieLens 100k dataset**. The service is built with **FastAPI** and designed to be deployed as a Docker container.
