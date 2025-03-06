@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import List
-from src.model import recommend_movies  # Import using full package path  # Import the recommendation function
+from src.model import (
+    recommend_movies,
+)  # Import using full package path  # Import the recommendation function
 
 app = FastAPI()
 
@@ -19,6 +21,7 @@ def read_root():
 
 
 # Recommendation endpoint
+
 
 @app.get("/recommend/{movie_name}")
 def recommend(movie_name: str):
