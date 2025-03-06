@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:  
   push:
@@ -32,3 +32,32 @@ jobs:
 
       - name: Run Tests
         run: make test  # Runs tests
+
+  build-and-push-docker:
+    needs: build-and-test  # Only runs if tests pass
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u devanshv16 --password-stdin
+
+      - name: Extract version from existing tags
+        id: get-version
+        run: |
+          LATEST_TAG=$(curl -s "https://registry.hub.docker.com/v2/repositories/devanshv16/movie-recommender/tags" | jq -r '.results[].name' | grep -E '^[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
+          if [[ -z "$LATEST_TAG" ]]; then
+            NEW_VERSION="1.0"
+          else
+            MINOR=$(echo "$LATEST_TAG" | awk -F. '{print $2}')
+            NEW_VERSION="1.$((MINOR + 1))"
+          fi
+          echo "VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+      - name: Build Docker Image
+        run: docker build -t devanshv16/movie-recommender:${{ env.VERSION }} .
+
+      - name: Push Docker Image to Docker Hub
+        run: docker push devanshv16/movie-recommender:${{ env.VERSION }}
