@@ -8,6 +8,9 @@ lint:
 format:
 	black .
 
+format-check:
+    black --check .
+
 test:
 	python -m pytest -vv -cov=src tests/*.py
 
