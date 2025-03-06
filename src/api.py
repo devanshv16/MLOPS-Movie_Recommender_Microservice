@@ -1,6 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel
-from typing import List
 from src.model import (
     recommend_movies,
 )  # Import using full package path  # Import the recommendation function

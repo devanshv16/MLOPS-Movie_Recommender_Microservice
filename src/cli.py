@@ -1,4 +1,4 @@
-from model import recommend_movies
+from src.model import recommend_movies
 import fire
 
 
