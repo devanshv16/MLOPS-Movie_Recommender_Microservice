@@ -1,83 +1,110 @@
-# MLOPS-Movie_Recommender_Microservice
+# MLOps Movie Recommender Microservice
 
-### CI/CD Pipeline Status
+## CI/CD Pipeline Status
 
-#### ✅ CI (Testing & Linting)
+### ✅ Continuous Integration (CI) - Testing & Linting
 [![CI Status](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml/badge.svg?job=build-and-test)](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml)
 
-#### 🚀 CD (Docker Deployment)
+### 🚀 Continuous Deployment (CD) - Docker Image Build & Push
 [![CD Status](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml/badge.svg?job=deploy)](https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice/actions/workflows/main.yml)
 
+---
+
 ## Overview
-This is a **containerized machine learning microservice** that provides movie recommendations using the **MovieLens 100k dataset**. The service is built with **FastAPI** and designed to be deployed as a Docker container.
+This is a **containerized machine learning microservice** that provides movie recommendations using the **MovieLens 100k dataset**. The service is built with **FastAPI** and designed for seamless deployment using **Docker** and **GitHub Actions**. The Docker image is publicly available on **Docker Hub**, allowing others to easily pull and run the service.
+
+---
 
 ## Tech Stack
+
 ### **Machine Learning & Data Processing**
-- **scikit-learn** – Collaborative filtering, SVD for recommendations
-- **pandas** – Data handling and preprocessing
-- **numpy** – Numerical computations
+- **scikit-learn** - SVD-based collaborative filtering
+- **pandas** - Data preprocessing & manipulation
+- **numpy** - Numerical computations
 
 ### **API & Backend**
-- **FastAPI** – Lightweight and fast web framework
-- **Uvicorn** – ASGI server for running FastAPI
+- **FastAPI** - High-performance web framework
+- **Uvicorn** - ASGI server for running FastAPI
 
 ### **Testing & Code Quality**
-- **pytest** – Unit testing
-- **pytest-cov** – Code coverage
-- **pylint** – Code linting
-- **black** – Code formatting
-- **flake8** – Linting support
-- **mypy** – Static type checking
+- **pytest** - Unit testing framework
+- **pytest-cov** - Code coverage
+- **black** - Code formatter
+- **pylint** - Linter for static code analysis
 
 ### **CLI Tool**
-- **Click** – Command-line interface for interacting with the model
+- **Fire** - Command-line interface for interacting with the model
 
 ### **Deployment & Containerization**
-- **Docker** – Containerizing the application
-- **GitHub Actions** – Automating testing in CI/CD pipeline
+- **Docker** - Containerized application
+- **GitHub Actions** - Automated testing & deployment
 
-## Workflow
-1. **Develop & Test Locally**
-   - Implement the movie recommender system.
-   - Write unit tests with `pytest`.
-   - Use `pylint` and `black` to maintain code quality.
+---
 
-2. **Version Control & CI/CD**
-   - Push code to GitHub.
-   - GitHub Actions automatically runs tests on push.
+## CI/CD Workflow
 
-3. **Containerization**
-   - Build a Docker image manually.
-   - Run and test the container locally.
+### 1️⃣ Code Development & Testing
+- Implement the recommender system
+- Run tests using `pytest`
+- Maintain code quality with `black` and `pylint`
 
-4. **Future Deployment (Not Implemented Yet)**
-   - Push the Docker image to a container registry.
-   - Deploy on AWS/GCP/Azure.
+### 2️⃣ CI/CD Automation
+- Push code to GitHub
+- GitHub Actions runs automated tests
+- Build & push the Docker image to Docker Hub
 
-## Installation & Usage
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/movie-recommendation-microservice.git
-   cd movie-recommendation-microservice
-   ```
+### 3️⃣ Containerization & Deployment
+- The Docker image is created and stored in **Docker Hub**
+- Future deployment plans: **AWS/GCP/Kubernetes**
 
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+---
 
-3. **Run tests:**
-   ```bash
-   pytest
-   ```
+## Getting Started
 
-4. **Run FastAPI application locally:**
-   ```bash
-   uvicorn app.main:app --reload
-   ```
+### Clone the repository
+```bash
+git clone https://github.com/devanshv16/MLOPS-Movie_Recommender_Microservice.git
+cd MLOPS-Movie_Recommender_Microservice
+```
+
+### Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Run tests
+```bash
+pytest
+```
+
+### Start the FastAPI server
+```bash
+uvicorn app.main:app --reload
+```
+
+---
+
+## Running with Docker
+
+The Docker image for this service is publicly available on **Docker Hub**. You can pull and run the container using the following commands:
+
+### Pull the image from Docker Hub
+```bash
+docker pull devanshv16/mlops-movie-recommender:latest
+```
+
+### Run the container
+```bash
+docker run -p 8000:8000 devanshv16/mlops-movie-recommender
+```
+
+This will start the FastAPI server on `http://localhost:8000`.
+
+---
 
 ## Future Enhancements
-- Automate Docker build in GitHub Actions
+- Automate Docker builds in GitHub Actions
+- Improve hyperparameter tuning for better recommendations
 - Deploy using AWS Lambda or Kubernetes
-- Implement user-based and item-based collaborative filtering
+- Implement hybrid collaborative + content-based filtering
 
