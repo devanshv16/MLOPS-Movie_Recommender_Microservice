@@ -2,6 +2,7 @@ scikit-learn
 pandas
 numpy
 fastapi
+pedantic
 uvicorn
 pytest
 pytest-cov
